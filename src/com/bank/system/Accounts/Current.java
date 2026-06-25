@@ -1,10 +1,10 @@
-package com.bank.system.data;
+package com.bank.system.Accounts;
 
-import com.bank.system.Accounts.Account;
+import com.bank.system.Services.Services;
 
 import java.util.Scanner;
 
-public class Current extends Account implements Services{
+public class Current extends Account implements Services {
    private double balance;
    public Current(){
         super("Current");

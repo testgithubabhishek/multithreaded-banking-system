@@ -1,4 +1,4 @@
-package com.bank.system.data;
+package com.bank.system.Services;
 
 public interface Services {
       void accounBalance();

@@ -2,9 +2,8 @@ package com.bank.system;
 
 import com.bank.system.Accounts.Savings;
 import com.bank.system.data.AccountDetails;
-import com.bank.system.data.Current;
+import com.bank.system.Accounts.Current;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 class Main{
