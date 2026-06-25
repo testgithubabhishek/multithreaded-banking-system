@@ -1,4 +1,4 @@
-package com.bank.system;
+package com.bank.system.user;
 
 import com.bank.system.Accounts.Savings;
 import com.bank.system.data.AccountDetails;
