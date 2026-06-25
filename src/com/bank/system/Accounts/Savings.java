@@ -1,16 +1,22 @@
 package com.bank.system.Accounts;
 
-import com.bank.system.data.Transactions;
+import com.bank.system.data.Services;
+
 
 import java.util.Scanner;
 
-public class Savings extends Account implements Transactions {
+public class Savings extends Account implements Services {
      static final double interestrate=2.5;
      private double balance;
      public Savings(){
          super("Savings");
 
      }
+
+    @Override
+    public void accounBalance() {
+        System.out.println("Account Balance is "+balance);
+    }
 
     @Override
     public void deposit() {

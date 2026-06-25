@@ -13,8 +13,8 @@ public class AccountDetails {
     public static Savings savingCheck(int ac){
        Savings temp=null;
        for(Savings s:savings){
-           if(s.getAccount()==ac){
-               if(validate(s))
+           if(s.getAccount()==ac && validate(s)){
+
                    temp=s;
            }
        }
@@ -24,8 +24,8 @@ public class AccountDetails {
     public static Current currentCheck(int ac){
         Current temp=null;
         for(Current c:currents){
-            if(c.getAccount()==ac){
-                if(validate(c))
+            if(c.getAccount()==ac && validate(c)){
+
                     temp=c;
             }
         }

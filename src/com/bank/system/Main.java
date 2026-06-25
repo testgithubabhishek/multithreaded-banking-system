@@ -32,14 +32,17 @@ class Main{
                     AccountDetails.savings.add(s);
                     System.out.println("Need to Deposit Initial Amount");
                     s.deposit();
+                    sc.nextLine();
                     System.out.println("\nAccount setup complete! Press Enter to return to the main menu...");
                     sc.nextLine();
+
                     break;
                 case 2:
                     Current c = new Current();
                     AccountDetails.currents.add(c);
                     System.out.println("Need to Deposit Initial Amount");
                     c.deposit();
+                    sc.nextLine();
                     System.out.println("\nAccount setup complete! Press Enter to return to the main menu...");
                     sc.nextLine();
                     break;
@@ -51,19 +54,20 @@ class Main{
                     if(type.equalsIgnoreCase("saving")){
                         Savings temp=AccountDetails.savingCheck(ac);
                         if(temp==null)
-                            System.out.println("Account don't exist");
+                            System.out.println("AccountNumber or password is Wrong");
                         else
                             temp.Withdraw();
                     }
                     else if(type.equalsIgnoreCase("current")){
                         Current temp=AccountDetails.currentCheck(ac);
                         if(temp==null)
-                            System.out.println("Account don't exist");
+                            System.out.println("AccountNumber or password is Wrong");
                         else
                             temp.Withdraw();
                     }
                     else
                         System.out.println("Enter write name Saving or Current");
+                    sc.nextLine();
                     System.out.println("\nAccount Withdraw complete! Press Enter to return to the main menu...");
                     sc.nextLine();
                     break;
@@ -87,10 +91,33 @@ class Main{
                     }
                     else
                         System.out.println("Enter write name Saving or Current");
-                    System.out.println("\nAccount setup complete! Press Enter to return to the main menu...");
+                    sc.nextLine();
+                    System.out.println("\nAccount Deposit complete! Press Enter to return to the main menu...");
                     sc.nextLine();
                     break;
-                case 5:
+                case 5:System.out.println("Enter Account Number");
+                    int accs= sc.nextInt();
+                    System.out.println("Enter Account Type Saving or Current");
+                    String typess=sc.next();
+                    if(typess.equalsIgnoreCase("saving")){
+                        Savings temp=AccountDetails.savingCheck(accs);
+                        if(temp==null)
+                            System.out.println("Check Account Number or Password");
+                        else
+                            temp.accounBalance();
+                    }
+                    else if(typess.equalsIgnoreCase("current")){
+                        Current temp=AccountDetails.currentCheck(accs);
+                        if(temp==null)
+                            System.out.println("Check Account Number or Password");
+                        else
+                            temp.accounBalance();
+                    }
+                    else
+                        System.out.println("Enter write name Saving or Current");
+                    sc.nextLine();
+                    System.out.println("\nAccount Balance Check complete! Press Enter to return to the main menu...");
+                    sc.nextLine();
                     break;
                 case 6:
                     break;

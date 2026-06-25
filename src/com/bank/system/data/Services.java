@@ -1,6 +1,7 @@
 package com.bank.system.data;
 
-public interface Transactions {
+public interface Services {
+      void accounBalance();
       void deposit();
       void Withdraw();
 }

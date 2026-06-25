@@ -4,10 +4,15 @@ import com.bank.system.Accounts.Account;
 
 import java.util.Scanner;
 
-public class Current extends Account implements Transactions{
-    private double balance;
+public class Current extends Account implements Services{
+   private double balance;
    public Current(){
         super("Current");
+    }
+
+    @Override
+    public void accounBalance() {
+        System.out.println("Account Balance is "+balance);
     }
 
     @Override
