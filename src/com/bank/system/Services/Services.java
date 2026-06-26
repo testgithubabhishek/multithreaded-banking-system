@@ -2,6 +2,6 @@ package com.bank.system.Services;
 
 public interface Services {
       void accounBalance();
-      void deposit();
-      void Withdraw();
+      void deposit(double amount);
+      void Withdraw(double amount);
 }

@@ -16,20 +16,21 @@ public class Current extends Account implements Services {
     }
 
     @Override
-    public void deposit() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the Amount you want to Deposit");
-        double amount=sc.nextDouble();
+    public void deposit(double amount) {
+        if(amount<0){
+            System.out.println("Invalid amount entered");
+        }
         balance+=amount;
     }
 
     @Override
-    public void Withdraw() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the Amount you want to WithDraw");
-        double amount=sc.nextDouble();
+    public void Withdraw(double amount) {
         if(balance<0 || amount>balance){
-            System.out.println("Insufficent Balance");
+            System.out.println("Insufficient Balance");
+        }
+        else if(amount>500000)
+        {
+            System.out.println("Max Withdraw is 500000");
         }
         else
             balance-=amount;

@@ -6,6 +6,7 @@ import com.bank.system.Accounts.Savings;
 import com.bank.system.Services.Services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AccountDetails {
@@ -34,5 +35,15 @@ public class AccountDetails {
         else
             return false;
 
+    }
+    public static Services findReceiver(Scanner sc){
+        System.out.println("Enter Receiver Account Number");
+        int account=sc.nextInt();
+        for(Account s:accounts){
+            if(s.getAccount()==account){
+                return (Services) s;
+            }
+        }
+        return null;
     }
 }

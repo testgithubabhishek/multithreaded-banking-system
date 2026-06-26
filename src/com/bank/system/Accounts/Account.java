@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Account {
     private static int accnum=19738;
-   final private int accountNumber;
+    final private int accountNumber;
     private String password;
     final private String type;
     protected Account(String type){

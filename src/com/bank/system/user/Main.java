@@ -3,9 +3,14 @@ package com.bank.system.user;
 import com.bank.system.Accounts.Account;
 import com.bank.system.Accounts.Savings;
 import com.bank.system.Services.Services;
+import com.bank.system.Transaction.Paypal;
+import com.bank.system.Transaction.Transaction;
+import com.bank.system.Transaction.creditCard;
+import com.bank.system.Transaction.debitCard;
 import com.bank.system.data.AccountDetails;
 import com.bank.system.Accounts.Current;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 class Main{
@@ -25,6 +30,7 @@ class Main{
                     Press 6 to do Transaction
                     Press 7 to Exit
                     """);
+            System.out.println();
             int options;
             System.out.print("Select Your Option: ");
 
@@ -35,7 +41,7 @@ class Main{
                         Savings s = new Savings();
                         AccountDetails.accounts.add(s);
                         System.out.println("Need to Deposit Initial Amount");
-                        s.deposit();
+                        s.deposit(sc.nextDouble());
                         islogedin=s;
                         sc.nextLine();
                         System.out.println("\nAccount setup complete! Press Enter to return to the main menu...");
@@ -51,7 +57,7 @@ class Main{
                         Current c = new Current();
                         AccountDetails.accounts.add(c);
                         System.out.println("Need to Deposit Initial Amount");
-                        c.deposit();
+                        c.deposit(sc.nextDouble());
                         islogedin=c;
                         sc.nextLine();
                         System.out.println("\nAccount setup complete! Press Enter to return to the main menu...");
@@ -64,13 +70,16 @@ class Main{
                 case 3:
                     if(islogedin==null) {
                         Services temp=findAccount(sc);
-                        if(temp!=null)
-                            temp.Withdraw();
+                        if(temp!=null) {
+                            System.out.println("Enter the amount to Withdraw");
+                            temp.Withdraw(sc.nextDouble());
+                        }
                         sc.nextLine();
                     }
                     else{
                         Services s = (Services) islogedin;
-                        s.Withdraw();
+                        System.out.println("Enter the amount to Withdraw");
+                        s.Withdraw(sc.nextDouble());
                         sc.nextLine();
                     }
                     System.out.println("\nAccount Withdraw complete! Press Enter to return to the main menu...");
@@ -79,12 +88,15 @@ class Main{
                 case 4:
                     if(islogedin==null) {
                        Services temp = findAccount(sc);
-                       if(temp!=null)
-                           temp.deposit();
+                       if(temp!=null) {
+                           System.out.println("Enter the amount to deposit");
+                           temp.deposit(sc.nextDouble());
+                       }
                     }
                     else{
                         Services s= (Services) islogedin;
-                        s.deposit();
+                        System.out.println("Enter the amount to deposit");
+                        s.deposit(sc.nextDouble());
                     }
                     System.out.println("\nAccount Deposit complete! Press Enter to return to the main menu...");
                     sc.nextLine();
@@ -104,6 +116,31 @@ class Main{
                     sc.nextLine();
                     break;
                 case 6:
+                    if(islogedin!=null) {
+                        System.out.println("""
+                                Select Payment Mode
+                                1 for Paypal
+                                2 for CreditCard
+                                3 for DebitCard
+                                """);
+                        int mode = sc.nextInt();
+                        Transaction transaction=null;
+                        switch (mode) {
+                            case 1 -> transaction = new Paypal();
+                            case 2 -> transaction = new creditCard();
+                            case 3 -> transaction = new debitCard();
+                            default -> transaction=null;
+                        }
+                        if(transaction!=null){
+                            Services receiver=AccountDetails.findReceiver(sc);
+                            if(receiver!=null) {
+                                System.out.println("Enter the Amount");
+                                transaction.getDetails(sc.nextDouble(), (Services) islogedin, receiver);
+                            }
+                            else
+                                System.out.println("Account is not present");
+                        }
+                    }
                     break;
                 case 7: {
                         runloop = false;
