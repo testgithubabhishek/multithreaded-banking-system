@@ -1,6 +1,7 @@
 package com.bank.system.user;
 
 import com.bank.system.Accounts.Savings;
+import com.bank.system.Services.Services;
 import com.bank.system.data.AccountDetails;
 import com.bank.system.Accounts.Current;
 
@@ -28,7 +29,7 @@ class Main{
             switch (options){
                 case 1:
                     Savings s = new Savings();
-                    AccountDetails.savings.add(s);
+                    AccountDetails.accounts.add(s);
                     System.out.println("Need to Deposit Initial Amount");
                     s.deposit();
                     sc.nextLine();
@@ -38,7 +39,7 @@ class Main{
                     break;
                 case 2:
                     Current c = new Current();
-                    AccountDetails.currents.add(c);
+                    AccountDetails.accounts.add(c);
                     System.out.println("Need to Deposit Initial Amount");
                     c.deposit();
                     sc.nextLine();
@@ -51,14 +52,14 @@ class Main{
                     System.out.println("Enter Account Type Saving or Current");
                     String type=sc.next();
                     if(type.equalsIgnoreCase("saving")){
-                        Savings temp=AccountDetails.savingCheck(ac);
+                        Services temp=AccountDetails.accCheck(ac);
                         if(temp==null)
                             System.out.println("AccountNumber or password is Wrong");
                         else
                             temp.Withdraw();
                     }
                     else if(type.equalsIgnoreCase("current")){
-                        Current temp=AccountDetails.currentCheck(ac);
+                        Services temp=AccountDetails.accCheck(ac);
                         if(temp==null)
                             System.out.println("AccountNumber or password is Wrong");
                         else
@@ -75,14 +76,14 @@ class Main{
                     System.out.println("Enter Account Type Saving or Current");
                     String types=sc.next();
                     if(types.equalsIgnoreCase("saving")){
-                        Savings temp=AccountDetails.savingCheck(acc);
+                       Services temp=AccountDetails.accCheck(acc);
                         if(temp==null)
                             System.out.println("Check Account Number or Password");
                         else
                             temp.deposit();
                     }
                     else if(types.equalsIgnoreCase("current")){
-                        Current temp=AccountDetails.currentCheck(acc);
+                        Services temp=AccountDetails.accCheck(acc);
                         if(temp==null)
                             System.out.println("Check Account Number or Password");
                         else
@@ -99,14 +100,14 @@ class Main{
                     System.out.println("Enter Account Type Saving or Current");
                     String typess=sc.next();
                     if(typess.equalsIgnoreCase("saving")){
-                        Savings temp=AccountDetails.savingCheck(accs);
+                        Services temp=AccountDetails.accCheck(accs);
                         if(temp==null)
                             System.out.println("Check Account Number or Password");
                         else
                             temp.accounBalance();
                     }
                     else if(typess.equalsIgnoreCase("current")){
-                        Current temp=AccountDetails.currentCheck(accs);
+                       Services temp=AccountDetails.accCheck(accs);
                         if(temp==null)
                             System.out.println("Check Account Number or Password");
                         else
