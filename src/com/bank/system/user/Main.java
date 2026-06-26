@@ -63,25 +63,9 @@ class Main{
                     break;
                 case 3:
                     if(islogedin==null) {
-                        System.out.println("Enter Account Number");
-                        int ac = sc.nextInt();
-                        System.out.println("Enter Account Type Saving or Current");
-                        String type = sc.next();
-                        if (type.equalsIgnoreCase("saving")) {
-                            Services temp = AccountDetails.accCheck(ac);
-                            if (temp == null)
-                                System.out.println("AccountNumber or password is Wrong");
-                            else
-                                temp.Withdraw();
-                        } else if (type.equalsIgnoreCase("current")) {
-                            Services temp = AccountDetails.accCheck(ac);
-                            if (temp == null)
-                                System.out.println("AccountNumber or password is Wrong");
-                            else
-                                temp.Withdraw();
-                        } else
-                            System.out.println("Enter write name Saving or Current");
-                        sc.nextLine();
+                        Services temp=findAccount(sc);
+                        if(temp!=null)
+                            temp.Withdraw();
                     }
                     else{
                         Services s = (Services) islogedin;
@@ -92,25 +76,9 @@ class Main{
                     break;
                 case 4:
                     if(islogedin==null) {
-                        System.out.println("Enter Account Number");
-                        int acc = sc.nextInt();
-                        System.out.println("Enter Account Type Saving or Current");
-                        String types = sc.next();
-                        if (types.equalsIgnoreCase("saving")) {
-                            Services temp = AccountDetails.accCheck(acc);
-                            if (temp == null)
-                                System.out.println("Check Account Number or Password");
-                            else
-                                temp.deposit();
-                        } else if (types.equalsIgnoreCase("current")) {
-                            Services temp = AccountDetails.accCheck(acc);
-                            if (temp == null)
-                                System.out.println("Check Account Number or Password");
-                            else
-                                temp.deposit();
-                        } else
-                            System.out.println("Enter write name Saving or Current");
-                        sc.nextLine();
+                       Services temp = findAccount(sc);
+                       if(temp!=null)
+                           temp.deposit();
                     }
                     else{
                         Services s= (Services) islogedin;
@@ -121,25 +89,9 @@ class Main{
                     break;
                 case 5:
                     if(islogedin==null) {
-                        System.out.println("Enter Account Number");
-                        int accs = sc.nextInt();
-                        System.out.println("Enter Account Type Saving or Current");
-                        String typess = sc.next();
-                        if (typess.equalsIgnoreCase("saving")) {
-                            Services temp = AccountDetails.accCheck(accs);
-                            if (temp == null)
-                                System.out.println("Check Account Number or Password");
-                            else
-                                temp.accounBalance();
-                        } else if (typess.equalsIgnoreCase("current")) {
-                            Services temp = AccountDetails.accCheck(accs);
-                            if (temp == null)
-                                System.out.println("Check Account Number or Password");
-                            else
-                                temp.accounBalance();
-                        } else
-                            System.out.println("Enter write name Saving or Current");
-                        sc.nextLine();
+                        Services temp = findAccount(sc);
+                        if(temp!=null)
+                            temp.accounBalance();
                     }
                     else
                     {
@@ -158,5 +110,14 @@ class Main{
         }
         System.out.println("Thank You For Visiting");
 
+    }
+    private static Services findAccount(Scanner sc) {
+        System.out.println("Enter Account Number");
+        int ac = sc.nextInt();
+        sc.nextLine();
+        Services temp = AccountDetails.accCheck(ac);
+        if(temp == null)
+            System.out.println("Account not found or wrong password");
+        return temp;
     }
 }
