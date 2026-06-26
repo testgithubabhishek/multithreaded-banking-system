@@ -66,10 +66,12 @@ class Main{
                         Services temp=findAccount(sc);
                         if(temp!=null)
                             temp.Withdraw();
+                        sc.nextLine();
                     }
                     else{
                         Services s = (Services) islogedin;
                         s.Withdraw();
+                        sc.nextLine();
                     }
                     System.out.println("\nAccount Withdraw complete! Press Enter to return to the main menu...");
                     sc.nextLine();
@@ -100,11 +102,14 @@ class Main{
                     }
                     System.out.println("\nAccount Balance Check complete! Press Enter to return to the main menu...");
                     sc.nextLine();
-                    sc.nextLine();
                     break;
                 case 6:
                     break;
-                case 7:runloop=false;
+                case 7: {
+                        runloop = false;
+                        islogedin=null;
+                    System.out.println("Logged out successfully");
+                }
             }
 
         }
