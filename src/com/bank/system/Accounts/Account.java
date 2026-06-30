@@ -37,7 +37,7 @@ public class Account {
     public int getAccount(){
         return accountNumber;
     }
-    public boolean checkPassword(String inputPassword) {
+    public final boolean checkPassword(String inputPassword) {
         return this.password.equals(inputPassword);
     }
     public void incCount(){
