@@ -3,6 +3,7 @@ package com.bank.system.Accounts;
 import java.util.Scanner;
 
 public class Account {
+    private int count=0;
     private static int accnum=19738;
     final private int accountNumber;
     private String password;
@@ -38,6 +39,15 @@ public class Account {
     }
     public boolean checkPassword(String inputPassword) {
         return this.password.equals(inputPassword);
+    }
+    public void incCount(){
+        count++;
+    }
+    public void setback(){
+        count=0;
+    }
+    public int getCount(){
+        return count;
     }
 
 }

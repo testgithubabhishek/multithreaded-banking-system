@@ -12,9 +12,11 @@ public class debitCard implements Transaction{
             // Keeps track of the thread status if interrupted
             Thread.currentThread().interrupt();
         }
-        sender.Withdraw(amount);
-        receiver.deposit(amount);
-        System.out.println("Transaction Complete");
+        if(sender.Withdraw(amount) &&  receiver.deposit(amount)) {
+            System.out.println("Transaction Complete");
+        }
+        else
+            System.out.println("Transaction failed");
         try {
             // 3000 milliseconds = 3 seconds
             Thread.sleep(3000);

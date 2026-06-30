@@ -9,18 +9,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+//import static com.sun.tools.javac.jvm.ByteCodes.illegal;
+
 public class AccountDetails {
     public static ArrayList<Account> accounts = new ArrayList<>();
 //    public static ArrayList<Current> currents = new ArrayList<>();
 
     public static Services accCheck(int ac){
-
        for(Account s:accounts){
-           if(s.getAccount()==ac && validate(s)){
-
-                  return (Services) s;
+           if(s.getAccount()==ac && validate(s)) {
+               return (Services) s;
+              }
            }
-       }
+
        return null;
     }
 
